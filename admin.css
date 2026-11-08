@@ -1,0 +1,337 @@
+/* ==========================================================================
+   KONYS PIZZA - ESTILOS PANEL ADMINISTRACIÓN (DARK PREMIUM THEME)
+   ========================================================================== */
+
+.admin-body {
+  background-color: var(--bg-main);
+  color: var(--text-main);
+}
+
+.hidden {
+  display: none !important;
+}
+
+.btn-sm {
+  padding: 0.45rem 0.95rem;
+  font-size: 0.85rem;
+}
+
+.btn-secondary {
+  background-color: var(--card-bg-subtle);
+  color: var(--text-main);
+  border: 1px solid rgba(248, 249, 250, 0.12);
+}
+
+.btn-secondary:hover {
+  background-color: #1a4256;
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.btn-outline {
+  background-color: transparent;
+  border: 1.5px solid rgba(248, 249, 250, 0.15);
+  color: var(--text-secondary);
+}
+
+.btn-outline:hover {
+  border-color: var(--color-alert);
+  color: var(--color-alert);
+  background-color: rgba(217, 56, 30, 0.1);
+}
+
+/* --- Pantalla de Login Fake Frontend --- */
+.login-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(80vh - 100px);
+  padding: 1.5rem;
+}
+
+.login-card {
+  background-color: var(--card-bg);
+  border: 1px solid rgba(245, 155, 41, 0.25);
+  border-radius: var(--radius);
+  padding: 2.75rem 2.25rem;
+  max-width: 440px;
+  width: 100%;
+  text-align: center;
+  box-shadow: var(--shadow-card);
+}
+
+.login-icon {
+  font-size: 3rem;
+  margin-bottom: 0.75rem;
+}
+
+.login-card h2 {
+  font-family: var(--font-heading);
+  font-size: 2.4rem;
+  letter-spacing: 1px;
+  color: var(--color-accent);
+  margin-bottom: 0.35rem;
+}
+
+.login-card p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 1.75rem;
+}
+
+.login-card form {
+  text-align: left;
+}
+
+.admin-hint {
+  display: block;
+  margin-top: 1.5rem;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.admin-hint code {
+  background-color: rgba(245, 155, 41, 0.15);
+  color: var(--color-accent);
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  border: 1px solid rgba(245, 155, 41, 0.3);
+  font-weight: 700;
+}
+
+/* --- Dashboard y Pestañas --- */
+.admin-dashboard {
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+}
+
+.admin-tabs {
+  display: flex;
+  gap: 0.65rem;
+  margin-bottom: 2rem;
+  overflow-x: auto;
+  border-bottom: 1.5px solid rgba(248, 249, 250, 0.08);
+  padding-bottom: 0.5rem;
+}
+
+.tab-btn {
+  background-color: transparent;
+  border: none;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  padding: 0.75rem 1.35rem;
+  border-radius: var(--radius) var(--radius) 0 0;
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.tab-btn:hover {
+  color: var(--color-accent);
+  background-color: rgba(245, 155, 41, 0.08);
+}
+
+.tab-btn.active {
+  color: var(--color-accent);
+  border-bottom: 3px solid var(--color-accent);
+  background-color: var(--card-bg);
+}
+
+/* --- Contenido de Pestañas --- */
+.tab-content {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius);
+  padding: 2rem;
+  box-shadow: var(--shadow-card);
+}
+
+.tab-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(248, 249, 250, 0.08);
+}
+
+.tab-header h3,
+.tab-header h4 {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  letter-spacing: 1px;
+  color: var(--color-accent);
+}
+
+.tab-header p {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.filters-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.admin-select {
+  padding: 0.55rem 0.95rem;
+  font-size: 0.85rem;
+  border-radius: var(--radius);
+  background-color: var(--card-bg-subtle);
+  border: 1px solid rgba(248, 249, 250, 0.12);
+  color: var(--text-main);
+}
+
+/* Grid de dos columnas */
+.two-column-admin {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.75rem;
+}
+
+@media (min-width: 900px) {
+  .two-column-admin {
+    grid-template-columns: 380px 1fr;
+  }
+}
+
+.admin-card {
+  background-color: var(--card-bg-subtle);
+  border: 1px solid rgba(248, 249, 250, 0.08);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+}
+
+.admin-card-subtitle {
+  font-size: 0.825rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.15rem;
+}
+
+.admin-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-check {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.875rem;
+  color: var(--text-main);
+}
+
+.form-check input {
+  width: auto;
+  accent-color: var(--color-accent);
+  cursor: pointer;
+}
+
+/* --- Tablas Administrativas --- */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  text-align: left;
+}
+
+.data-table th,
+.data-table td {
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid rgba(248, 249, 250, 0.06);
+  vertical-align: middle;
+}
+
+.data-table th {
+  background-color: rgba(9, 28, 37, 0.6);
+  color: var(--color-accent);
+  font-family: var(--font-heading);
+  letter-spacing: 0.8px;
+  font-size: 1rem;
+}
+
+.data-table tbody tr:hover {
+  background-color: rgba(248, 249, 250, 0.03);
+}
+
+.text-center {
+  text-align: center;
+  color: var(--text-secondary);
+  padding: 2.5rem 0;
+}
+
+/* Badges de Estado */
+.status-pill {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  letter-spacing: 0.5px;
+}
+
+.status-confirmada { background-color: rgba(245, 155, 41, 0.15); color: var(--color-accent); border: 1px solid rgba(245, 155, 41, 0.3); }
+.status-completada { background-color: var(--color-success-light); color: var(--color-success); border: 1px solid rgba(46, 196, 182, 0.3); }
+.status-cancelada { background-color: rgba(217, 56, 30, 0.15); color: var(--color-alert); border: 1px solid rgba(217, 56, 30, 0.3); }
+
+.status-activa { background-color: var(--color-success-light); color: var(--color-success); border: 1px solid rgba(46, 196, 182, 0.3); }
+.status-inactiva { background-color: rgba(217, 56, 30, 0.15); color: var(--color-alert); border: 1px solid rgba(217, 56, 30, 0.3); }
+
+/* Botones de Acción en Tablas */
+.action-btn-group {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.btn-action {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0.35rem 0.65rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  transition: var(--transition);
+}
+
+.btn-action-complete {
+  background-color: var(--color-success-light);
+  color: var(--color-success);
+}
+
+.btn-action-complete:hover {
+  background-color: var(--color-success);
+  color: #0F2B38;
+}
+
+.btn-action-cancel {
+  background-color: rgba(217, 56, 30, 0.15);
+  color: var(--color-alert);
+}
+
+.btn-action-cancel:hover {
+  background-color: var(--color-alert);
+  color: #ffffff;
+}
+
+.btn-action-toggle {
+  background-color: rgba(248, 249, 250, 0.08);
+  color: var(--text-main);
+}
+
+.btn-action-toggle:hover {
+  background-color: rgba(248, 249, 250, 0.15);
+  color: var(--color-accent);
+}

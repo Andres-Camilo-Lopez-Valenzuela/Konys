@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Konys Pizza | Panel de Administración</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body class="admin-body">
+
+  <!-- HEADER DEL ADMIN -->
+  <header class="header">
+    <div class="container header-container">
+      <div class="logo">
+        <img src="logo-konys.jpg" alt="Konys Logo" class="logo-brand-img">
+        <div class="logo-text">
+          <h1>KONYS <span>Admin</span></h1>
+          <p class="tagline">La pizza más ikónica de la ciudad</p>
+        </div>
+      </div>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link" target="_blank">Ver Vista Cliente ➔</a>
+        <button id="btn-logout" class="btn btn-sm btn-outline hidden">Cerrar Sesión</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- PANTALLA DE ACCESO (LOGIN SIMPLE FRONTEND) -->
+  <section id="login-section" class="login-wrapper">
+    <div class="login-card">
+      <div class="login-icon">🔒</div>
+      <h2>Acceso Administrador</h2>
+      <p>Ingresa la clave maestra para gestionar mesas, horarios y reservas.</p>
+      
+      <form id="login-form">
+        <div class="form-group">
+          <label for="admin-pass">Contraseña:</label>
+          <input 
+            type="password" 
+            id="admin-pass" 
+            placeholder="Clave de acceso (por defecto: konys2026)" 
+            required 
+            autocomplete="current-password"
+          >
+          <small class="error-msg" id="login-error"></small>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Ingresar al Dashboard</button>
+      </form>
+      <small class="admin-hint">Clave por defecto: <code>konys2026</code></small>
+    </div>
+  </section>
+
+  <!-- DASHBOARD PRINCIPAL (OCULTO HASTA LOGIN EXITOSO) -->
+  <main id="dashboard-section" class="container admin-dashboard hidden">
+    
+    <!-- PESTAÑAS (TABS) -->
+    <nav class="admin-tabs" role="tablist">
+      <button class="tab-btn active" data-tab="tab-reservas" role="tab">
+        📋 Ver Reservas (<span id="count-reservas">0</span>)
+      </button>
+      <button class="tab-btn" data-tab="tab-mesas" role="tab">
+        🪑 Gestión de Mesas (<span id="count-mesas">0</span>)
+      </button>
+      <button class="tab-btn" data-tab="tab-horarios" role="tab">
+        ⏰ Gestión de Horarios
+      </button>
+    </nav>
+
+    <!-- TAB 1: VER RESERVAS -->
+    <section id="tab-reservas" class="tab-content active" role="tabpanel">
+      <div class="tab-header">
+        <div>
+          <h3>Reservas Registradas</h3>
+          <p>Supervisa las reservas confirmadas, canceladas o completadas.</p>
+        </div>
+        <div class="filters-actions">
+          <select id="filtro-estado-reserva" class="admin-select">
+            <option value="todas">Todos los estados</option>
+            <option value="confirmada">Confirmadas</option>
+            <option value="completada">Completadas</option>
+            <option value="cancelada">Canceladas</option>
+          </select>
+          <button id="btn-refresh-reservas" class="btn btn-sm btn-secondary">🔄 Actualizar</button>
+        </div>
+      </div>
+
+      <div class="table-responsive">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Cliente</th>
+              <th>Contacto</th>
+              <th>Mesa</th>
+              <th>Fecha</th>
+              <th>Horario</th>
+              <th>Personas</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="reservas-table-body">
+            <tr>
+              <td colspan="8" class="text-center">Cargando reservas desde Supabase...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- TAB 2: GESTIÓN DE MESAS -->
+    <section id="tab-mesas" class="tab-content hidden" role="tabpanel">
+      <div class="two-column-admin">
+        
+        <!-- Formulario: Registrar nueva mesa -->
+        <div class="admin-card">
+          <h4>➕ Registrar Nueva Mesa</h4>
+          <p class="admin-card-subtitle">Agrega una nueva mesa al catálogo del restaurante.</p>
+          
+          <form id="form-nueva-mesa" class="admin-form">
+            <div class="form-group">
+              <label for="mesa-nombre">Nombre de la Mesa:</label>
+              <input type="text" id="mesa-nombre" placeholder="Ej: Mesa 12 / Rústica 3" required>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="mesa-zona">Zona:</label>
+                <select id="mesa-zona" required>
+                  <option value="Salón Principal">Salón Principal</option>
+                  <option value="Terraza">Terraza</option>
+                  <option value="VIP">VIP</option>
+                  <option value="Barra">Barra</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="mesa-capacidad">Capacidad:</label>
+                <input type="number" id="mesa-capacidad" min="1" max="30" value="4" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="mesa-foto">URL de Foto (Opcional):</label>
+              <input type="url" id="mesa-foto" placeholder="https://ejemplo.com/foto-mesa.jpg">
+            </div>
+
+            <div class="form-check">
+              <input type="checkbox" id="mesa-activa" checked>
+              <label for="mesa-activa">Mesa activa y disponible para reservas</label>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Guardar Mesa en Supabase</button>
+          </form>
+        </div>
+
+        <!-- Lista de Mesas Existentes -->
+        <div class="admin-card">
+          <div class="tab-header">
+            <h4>Catálogo de Mesas</h4>
+            <button id="btn-refresh-mesas" class="btn btn-sm btn-secondary">🔄</button>
+          </div>
+          
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Mesa</th>
+                  <th>Zona</th>
+                  <th>Capacidad</th>
+                  <th>Estado</th>
+                  <th>Acción</th>
+                </tr>
+              </thead>
+              <tbody id="mesas-table-body">
+                <tr>
+                  <td colspan="5" class="text-center">Cargando catálogo...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TAB 3: GESTIÓN DE HORARIOS -->
+    <section id="tab-horarios" class="tab-content hidden" role="tabpanel">
+      <div class="two-column-admin">
+        
+        <!-- Formulario de nuevo turno -->
+        <div class="admin-card">
+          <h4>➕ Configurar Horario / Turno</h4>
+          <p class="admin-card-subtitle">Define las franjas horarias y duración de slots.</p>
+
+          <form id="form-nuevo-horario" class="admin-form">
+            <div class="form-group">
+              <label for="horario-dia">Día de la Semana:</label>
+              <select id="horario-dia" required>
+                <option value="todos">Todos los días</option>
+                <option value="lunes">Lunes</option>
+                <option value="martes">Martes</option>
+                <option value="miercoles">Miércoles</option>
+                <option value="jueves">Jueves</option>
+                <option value="viernes">Viernes</option>
+                <option value="sabado">Sábado</option>
+                <option value="domingo">Domingo</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="horario-jornada">Jornada:</label>
+              <select id="horario-jornada" required>
+                <option value="Almuerzo">Almuerzo</option>
+                <option value="Cena">Cena</option>
+                <option value="Jornada Continua">Jornada Continua</option>
+              </select>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="horario-inicio">Hora Inicio:</label>
+                <input type="time" id="horario-inicio" value="12:00" required>
+              </div>
+
+              <div class="form-group">
+                <label for="horario-fin">Hora Fin:</label>
+                <input type="time" id="horario-fin" value="23:00" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="horario-duracion">Duración del Slot (Minutos):</label>
+              <input type="number" id="horario-duracion" min="30" max="180" step="15" value="60" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Guardar Horario en Supabase</button>
+          </form>
+        </div>
+
+        <!-- Lista de Horarios Existentes -->
+        <div class="admin-card">
+          <div class="tab-header">
+            <h4>Horarios Registrados</h4>
+            <button id="btn-refresh-horarios" class="btn btn-sm btn-secondary">🔄</button>
+          </div>
+
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Día</th>
+                  <th>Jornada</th>
+                  <th>Franja</th>
+                  <th>Duración Slot</th>
+                  <th>Estado</th>
+                  <th>Acción</th>
+                </tr>
+              </thead>
+              <tbody id="horarios-table-body">
+                <tr>
+                  <td colspan="6" class="text-center">Cargando horarios...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- SUPABASE JS SDK (CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <!-- CONFIGURACIÓN & LÓGICA ADMIN -->
+  <script src="supabase.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

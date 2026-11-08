@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Konys - La pizza en cono más ikónica de la ciudad. Reserva tu mesa en línea de forma rápida y sencilla.">
+  <title>Konys | La Pizza Más Ikónica de la Ciudad</title>
+  
+  <!-- Google Fonts: Bebas Neue, Montserrat, Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- HEADER / NAVEGACIÓN -->
+  <header class="header">
+    <div class="container header-container">
+      <a href="#reservas" class="logo">
+        <img src="logo-konys.jpg" alt="Konys Logo" class="logo-brand-img">
+        <div class="logo-text">
+          <h1>KONYS</h1>
+          <p class="tagline">La pizza más ikónica de la ciudad</p>
+        </div>
+      </a>
+      <nav class="nav-links">
+        <a href="#menu-ikonico" class="nav-link">Nuestros Konys</a>
+        <a href="#reservas" class="nav-link active">Reservar Mesa</a>
+        <a href="admin.html" class="nav-link admin-link" title="Acceso de Administrador">Panel Admin 🔒</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- BANNER HERO -->
+  <section class="hero">
+    <div class="container hero-content">
+      <span class="badge">🔥 Experiencia Única en Cono</span>
+      <h2>La pizza más ikónica de la ciudad</h2>
+      <p>Masa crujiente en cono, queso mozzarella desbordante y los mejores ingredientes. Reserva tu mesa ahora y vive la experiencia.</p>
+    </div>
+  </section>
+
+  <!-- SECCIÓN SHOWCASE: NUESTROS PRODUCTOS IKÓNICOS -->
+  <section class="products-showcase-section" id="menu-ikonico">
+    <div class="container">
+      <div class="section-title-box">
+        <span class="badge-mini">Menú Destacado</span>
+        <h3 class="section-title">NUESTROS KONYS IKÓNICOS</h3>
+        <p class="section-subtitle">Descubre por qué todos hablan de la experiencia Konys en cono</p>
+      </div>
+
+      <div class="products-grid">
+        
+        <!-- Tarjeta Producto 1: El Kony Pepperoni -->
+        <article class="product-card">
+          <div class="product-img-wrapper">
+            <img src="antojo-ikonico.png" alt="Kony Pepperoni Fundido - Un antojo ikónico" class="product-img" loading="lazy">
+            <span class="product-pill-badge">El Más Pedido</span>
+          </div>
+          <div class="product-body">
+            <h4 class="product-title">Kony Pepperoni Clásico</h4>
+            <p class="product-desc">Cono horneado relleno con pomodoro artesanal, mozzarella abundante y queso fundido que se estira en cada mordisco. Acompañado de papas crocantes en cono.</p>
+            <div class="product-footer">
+              <span class="product-tag">🧀 Extra Queso Fundido</span>
+              <a href="#reservas" class="btn-product-reserve">Pedir en tu mesa ➔</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Tarjeta Producto 2: Combo Experiencia Konys -->
+        <article class="product-card">
+          <div class="product-img-wrapper">
+            <img src="combo-experiencia.png" alt="Combo Experiencia Konys para compartir" class="product-img" loading="lazy">
+            <span class="product-pill-badge">Ideal para 2</span>
+          </div>
+          <div class="product-body">
+            <h4 class="product-title">Combo Experiencia Konys</h4>
+            <p class="product-desc">La mesa perfecta: 2 Konys especiales a elección, plato central de papas fritas gratinadas, 2 cócteles de autor con romero y 2 copas de postre con helado artesanal.</p>
+            <div class="product-footer">
+              <span class="product-tag">🍸 Conos + Cócteles + Postre</span>
+              <a href="#reservas" class="btn-product-reserve">Pedir en tu mesa ➔</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Tarjeta Producto 3: Estación de Konys para Grupos -->
+        <article class="product-card">
+          <div class="product-img-wrapper">
+            <img src="estacion-konys.png" alt="Estación de Konys & Papas en soporte espiral" class="product-img" loading="lazy">
+            <span class="product-pill-badge">Para Grupos & Amigos</span>
+          </div>
+          <div class="product-body">
+            <h4 class="product-title">Estación Konys & Papas</h4>
+            <p class="product-desc">Servidos en sus icónicos soportes espirales de mesa: variedad de sabores salados recién horneados y conos llenos de papas doradas para compartir entre amigos.</p>
+            <div class="product-footer">
+              <span class="product-tag">🍟 Soportes Espirales de Mesa</span>
+              <a href="#reservas" class="btn-product-reserve">Pedir en tu mesa ➔</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENIDO PRINCIPAL: SISTEMA DE RESERVAS -->
+  <main class="container main-content" id="reservas">
+    <div class="booking-layout">
+      
+      <!-- FORMULARIO DE RESERVA (DATOS DEL CLIENTE Y FECHA) -->
+      <section class="booking-form-card" aria-labelledby="form-heading">
+        <div class="card-header">
+          <h3 id="form-heading">1. Datos de tu Reserva</h3>
+          <p>Ingresa tus datos y los detalles de tu visita.</p>
+        </div>
+
+        <form id="reservation-form" class="reservation-form" novalidate>
+          <div class="form-group">
+            <label for="cliente_nombre">Nombre Completo <span class="required">*</span></label>
+            <input 
+              type="text" 
+              id="cliente_nombre" 
+              name="cliente_nombre" 
+              placeholder="Ej: Sofia Mendoza" 
+              required 
+              autocomplete="name"
+            >
+            <small class="error-msg" id="error-nombre"></small>
+          </div>
+
+          <div class="form-group">
+            <label for="cliente_contacto">Teléfono o WhatsApp <span class="required">*</span></label>
+            <input 
+              type="tel" 
+              id="cliente_contacto" 
+              name="cliente_contacto" 
+              placeholder="Ej: +57 300 123 4567" 
+              required 
+              autocomplete="tel"
+            >
+            <small class="error-msg" id="error-contacto"></small>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fecha">Fecha <span class="required">*</span></label>
+              <input 
+                type="date" 
+                id="fecha" 
+                name="fecha" 
+                required
+              >
+              <small class="error-msg" id="error-fecha"></small>
+            </div>
+
+            <div class="form-group">
+              <label for="hora_inicio">Hora del Turno <span class="required">*</span></label>
+              <select id="hora_inicio" name="hora_inicio" required disabled>
+                <option value="">Selecciona fecha primero...</option>
+              </select>
+              <small class="error-msg" id="error-hora"></small>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="num_personas">Número de Personas <span class="required">*</span></label>
+            <input 
+              type="number" 
+              id="num_personas" 
+              name="num_personas" 
+              min="1" 
+              max="20" 
+              value="2" 
+              required
+            >
+            <small class="helper-text">Mostraremos las mesas con capacidad suficiente.</small>
+          </div>
+
+          <!-- RESUMEN DE LA MESA SELECCIONADA -->
+          <div class="selected-table-box" id="selected-table-box">
+            <div class="table-info">
+              <span class="box-label">Mesa Seleccionada:</span>
+              <p class="selected-table-name" id="selected-table-name">Ninguna mesa seleccionada</p>
+              <p class="selected-table-details" id="selected-table-details">Haz clic en una mesa disponible en el mapa.</p>
+            </div>
+            <span class="table-status-pill" id="selected-table-pill">Pendiente</span>
+          </div>
+
+          <!-- BOTÓN DE ENVÍO -->
+          <button 
+            type="submit" 
+            id="btn-reservar" 
+            class="btn btn-primary btn-block" 
+            disabled
+          >
+            <span>Confirmar Reserva</span>
+            <span class="btn-icon">➔</span>
+          </button>
+        </form>
+      </section>
+
+      <!-- VISTA VISUAL DE MESAS (GRID) -->
+      <section class="tables-view-card" aria-labelledby="tables-heading">
+        <div class="card-header">
+          <div class="title-with-badge">
+            <h3 id="tables-heading">2. Selecciona tu Mesa</h3>
+            <span class="tables-count" id="tables-count">Cargando mesas...</span>
+          </div>
+          <p>Verifica la zona y capacidad ideal para tu grupo.</p>
+
+          <!-- CONVENCIÓN / LEYENDA DE ESTADOS -->
+          <div class="legend-bar">
+            <span class="legend-item"><span class="dot dot-available"></span> Disponible</span>
+            <span class="legend-item"><span class="dot dot-selected"></span> Tu selección</span>
+            <span class="legend-item"><span class="dot dot-occupied"></span> Ocupada</span>
+            <span class="legend-item"><span class="dot dot-disabled"></span> No disponible</span>
+          </div>
+
+          <!-- FILTRO RÁPIDO DE ZONAS -->
+          <div class="zone-filters" id="zone-filters">
+            <button type="button" class="filter-pill active" data-zone="todas">Todas</button>
+            <button type="button" class="filter-pill" data-zone="Salón Principal">Salón Principal</button>
+            <button type="button" class="filter-pill" data-zone="Terraza">Terraza</button>
+            <button type="button" class="filter-pill" data-zone="VIP">VIP</button>
+          </div>
+        </div>
+
+        <!-- CONTENEDOR GRID DE TARJETAS DE MESAS -->
+        <div class="tables-grid" id="tables-grid">
+          <div class="loading-state">
+            <div class="spinner"></div>
+            <p>Conectando con el salón de Konys...</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- MODAL / TOAST DE CONFIRMACIÓN -->
+  <div class="modal-overlay" id="confirmation-modal" aria-hidden="true">
+    <div class="modal-dialog">
+      <img src="logo-konys.jpg" alt="Konys Logo" class="modal-logo-img">
+      <h3>¡Reserva Confirmada con Éxito!</h3>
+      <p id="modal-summary">Te esperamos en Konys con la mesa lista y tus conos calientes.</p>
+      
+      <div class="modal-ticket" id="modal-ticket">
+        <!-- Rellenado por app.js -->
+      </div>
+
+      <button type="button" class="btn btn-primary btn-block" id="btn-close-modal">
+        Entendido, ¡muchas gracias!
+      </button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <img src="logo-konys.jpg" alt="Konys Logo" class="footer-logo-img">
+        <p class="footer-tagline">KONYS — La pizza más ikónica de la ciudad</p>
+      </div>
+      <p class="footer-copy">© 2026 Konys — Proyecto Académico JAMstack con JavaScript Vanilla & Supabase.</p>
+      <p class="footer-sub">Pizzas en cono • Papas en cono • Cócteles y postres de autor</p>
+    </div>
+  </footer>
+
+  <!-- SUPABASE JS SDK (CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <!-- CONFIGURACIÓN & LÓGICA CLIENTE -->
+  <script src="supabase.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
